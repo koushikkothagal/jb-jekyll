@@ -1,0 +1,49 @@
+---
+layout: default
+---
+
+<div class="home">
+
+  <h1 class="page-heading">Posts</h1>
+
+  
+  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+
+    
+    
+  <ul class="post-list">
+    {% for topic in site.topics %}
+      <li>
+        <span class="post-meta">{{ topic.date | date: "%b %-d, %Y" }}</span>
+
+        <h2>
+          <a class="post-link" href="{{ topic.url | prepend: site.baseurl }}">{{ topic.title }}</a>
+        </h2>
+      </li>
+    {% endfor %}
+  </ul>
+    
+    {% for course in site.data['courseData'] %}
+    
+    <h1>Course: {{ course.name }}</h1>
+    
+        {% for unit in course.units %}
+    
+        <h2>Unit: {{ unit.name }}</h2>
+        <p>{{ unit.desc }}</p>
+            {% for lesson in unit.lessons %}
+                <h3>Lesson: {{ lesson.name }}</h3>
+                <p>{{lesson.video}}</p>
+                {% for section in lesson.sections %}
+                    <h3>Section: {{ section.title }}</h3>
+                {% endfor %}
+    
+            {% endfor %}
+        {% endfor %}
+    
+    {% endfor %}
+    
+    
+    
+    
+</div>

@@ -1,0 +1,725 @@
+Configuration file: /Users/kkothagal/code/java-brains/jb-jekyll/_config.yml
+            Source: /Users/kkothagal/code/java-brains/jb-jekyll
+       Destination: /Users/kkothagal/code/java-brains/jb-jekyll/_site
+      Generating... 
+--- &7
+topics: &10 !ruby/object:Jekyll::Collection
+  site: &5 !ruby/object:Jekyll::Site
+    config: &8
+      source: "/Users/kkothagal/code/java-brains/jb-jekyll"
+      destination: "/Users/kkothagal/code/java-brains/jb-jekyll/_site"
+      plugins: _plugins
+      layouts: _layouts
+      data_source: _data
+      collections:
+        topics: &9
+          output: true
+        courses: &11
+          output: true
+        units: &13
+          output: true
+        sections: &15
+          output: true
+      safe: false
+      include: &2
+      - ".htaccess"
+      exclude: &1 []
+      keep_files: &3
+      - ".git"
+      - ".svn"
+      encoding: utf-8
+      markdown_ext: markdown,mkdown,mkdn,mkd,md
+      textile_ext: textile
+      show_drafts: 
+      limit_posts: 0
+      future: true
+      unpublished: false
+      whitelist: []
+      gems: &4 []
+      markdown: kramdown
+      highlighter: pygments
+      lsi: false
+      excerpt_separator: |2+
+
+
+      detach: false
+      port: '4000'
+      host: 0.0.0.0
+      baseurl: ''
+      relative_permalinks: false
+      permalink: date
+      paginate_path: "/page:num"
+      timezone: 
+      quiet: false
+      defaults: []
+      maruku:
+        use_tex: false
+        use_divs: false
+        png_engine: blahtex
+        png_dir: images/latex
+        png_url: "/images/latex"
+        fenced_code_blocks: true
+      rdiscount:
+        extensions: []
+      redcarpet:
+        extensions: []
+      kramdown:
+        auto_ids: true
+        footnote_nr: 1
+        entity_output: as_char
+        toc_levels: 1..6
+        smart_quotes: lsquo,rsquo,ldquo,rdquo
+        use_coderay: false
+        coderay:
+          coderay_wrap: div
+          coderay_line_numbers: inline
+          coderay_line_number_start: 1
+          coderay_tab_width: 4
+          coderay_bold_every: 10
+          coderay_css: style
+      redcloth:
+        hard_breaks: true
+      title: Your awesome title
+      email: your-email@domain.com
+      description: |
+        Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+      url: http://yourdomain.com
+      twitter_username: jekyllrb
+      github_username: jekyll
+      serving: true
+      watch: true
+    safe: false
+    lsi: false
+    highlighter: pygments
+    baseurl: ''
+    exclude: *1
+    include: *2
+    future: true
+    unpublished: false
+    show_drafts: 
+    limit_posts: 0
+    keep_files: *3
+    gems: *4
+    source: "/Users/kkothagal/code/java-brains/jb-jekyll"
+    dest: "/Users/kkothagal/code/java-brains/jb-jekyll/_site"
+    permalink_style: :date
+    plugin_manager: !ruby/object:Jekyll::PluginManager
+      site: *5
+    plugins:
+    - "/Users/kkothagal/code/java-brains/jb-jekyll/_plugins"
+    file_read_opts:
+      :encoding: utf-8
+    time: 2014-11-14 20:40:23.164374000 -08:00
+    layouts:
+      course: !ruby/object:Jekyll::Layout
+        site: *5
+        base: "/Users/kkothagal/code/java-brains/jb-jekyll/_layouts"
+        name: course.html
+        data:
+          layout: default
+        ext: ".html"
+        content: "ID: {{ post.id }}\n\n<div class=\"post\">\n\n  <header class=\"post-header\">\n
+          \   <h1 class=\"post-title\">{{ page.title }} </h1>\n  </header>\n\n    {%
+          assign path = '_units/' | append: page.course_id | append:'/' %}\n\n    \n
+          \  <ul class=\"post-list\">\n         \n          \n    {% for unit in site.units
+          %}\n          \n      <li>\n     \n        <h2>\n          <a class=\"post-link\"
+          href=\"{{ unit.url | prepend: site.baseurl }}\">{{ unit.title }} > {{ path
+          }}</a>\n        </h2>\n      </li>\n    {% endfor %}\n  </ul>\n    \n    \n
+          \   \n    <h1>----</h1>\n    \n    {% assign currentCourseSections = site.sections
+          | where: \"course\" , page.course_id %}\n    \n    {% assign units = currentCourseSections
+          | sort: 'unit' | map: 'unit' %}\n    {% assign previousUnitLoopValue = ''
+          %}\n    {% for unit in units %}\n        {% if unit == previousUnitLoopValue
+          %}\n            {% continue %}\n        {% endif %}\n    \n        <h1>Unit
+          {{unit}}</h1>\n        {% assign sectionsForUnit = (currentCourseSections
+          | where: \"unit\" , unit | sort: 'unit') %}\n        \n        \n            {%
+          assign lessons = sectionsForUnit | sort: 'lesson' | map: 'lesson'  %}\n
+          \           {% assign previousLessonLoopValue = '' %}\n            {% for
+          lesson in lessons %}\n                {% if lesson == previousLessonLoopValue
+          %}\n                    {% continue %}\n                {% endif %}\n                <h1>Lesson
+          {{lesson}}</h1>\n                {% assign sectionsForLesson = (sectionsForUnit
+          | where: \"lesson\" , lesson | sort: 'lesson') %}\n                {% for
+          sectionForLesson in sectionsForLesson %}\n                    <h2>{{ sectionForLesson.title
+          }}</h2>\n                {% endfor %}\n                {% assign previousLessonLoopValue
+          = lesson %}\n            {% endfor %}\n            \n        \n        {%
+          assign previousUnitLoopValue = unit %}\n    \n    \n    {% endfor %}\n    \n
+          \   \n    \n</div>\n"
+      default: !ruby/object:Jekyll::Layout
+        site: *5
+        base: "/Users/kkothagal/code/java-brains/jb-jekyll/_layouts"
+        name: default.html
+        data: {}
+        ext: ".html"
+        content: |
+          <!DOCTYPE html>
+          <html>
+
+            {% include head.html %}
+
+            <body>
+
+              {% include header.html %}
+
+              <div class="page-content">
+                <div class="wrapper">
+                  {{ content }}
+                </div>
+              </div>
+
+              {% include footer.html %}
+
+            </body>
+
+          </html>
+      page: !ruby/object:Jekyll::Layout
+        site: *5
+        base: "/Users/kkothagal/code/java-brains/jb-jekyll/_layouts"
+        name: page.html
+        data:
+          layout: default
+        ext: ".html"
+        content: |
+          <div class="post">
+
+            <header class="post-header">
+              <h1 class="post-title">{{ page.title }}</h1>
+            </header>
+
+            <article class="post-content">
+              {{ content }}
+            </article>
+
+          </div>
+      post: !ruby/object:Jekyll::Layout
+        site: *5
+        base: "/Users/kkothagal/code/java-brains/jb-jekyll/_layouts"
+        name: post.html
+        data:
+          layout: default
+        ext: ".html"
+        content: |
+          <div class="post">
+
+            <header class="post-header">
+              <h1 class="post-title">{{ page.title }}</h1>
+              <p class="post-meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
+            </header>
+
+            <article class="post-content">
+              {{ content }}
+            </article>
+
+          </div>
+      topic: !ruby/object:Jekyll::Layout
+        site: *5
+        base: "/Users/kkothagal/code/java-brains/jb-jekyll/_layouts"
+        name: topic.html
+        data:
+          layout: default
+        ext: ".html"
+        content: "ID: {{ post.id }}\n\n<div class=\"post\">\n\n  <header class=\"post-header\">\n
+          \   <h1 class=\"post-title\">{{ page.title }} </h1>\n    <p class=\"post-meta\">{{
+          page.date | date: \"%b %-d, %Y\" }}{% if page.author %} • {{ page.author
+          }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>\n  </header>\n\n\n
+          \   \n  \n  \n    {% assign courses = (site.courses | where: \"topic\" ,
+          page.topic_id | sort: 'sl') %}\n    \n     <ul class=\"post-list\">\n          \n
+          \   {% for course in courses %}\n          \n      <li>\n        <span class=\"post-meta\">{{
+          course.date | date: \"%b %-d, %Y\" }}</span>\n\n        <h2>\n          <a
+          class=\"post-link\" href=\"{{ course.url | prepend: site.baseurl }}\">{{
+          course.title }}</a>\n        </h2>\n      </li>\n    {% endfor %}\n  </ul>\n
+          \   <h1>____</h1>\n    \n        \n    \n    \n    \n    \n    \n    \n
+          \   \n    \n</div>\n"
+    posts:
+    - &6 !ruby/object:Jekyll::Post
+      site: *5
+      dir: ''
+      base: "/Users/kkothagal/code/java-brains/jb-jekyll/_posts"
+      name: 2014-11-12-welcome-to-jekyll.markdown
+      categories:
+      - jekyll
+      - update
+      date: 2014-11-11 23:18:28.000000000 -08:00
+      slug: welcome-to-jekyll
+      ext: ".markdown"
+      content: |+
+        You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve --watch`, which launches a web server and auto-regenerates your site when a file is updated.
+
+        To add new posts, simply add a file in the `_posts` directory that follows the convention `YYYY-MM-DD-name-of-post.ext` and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+
+        Jekyll also offers powerful support for code snippets:
+
+        {% highlight java %}
+        System.out.println("Hello World"); //prints 'Hi, Tom' to STDOUT.
+        {% endhighlight %}
+
+        Check out the [Jekyll docs][jekyll] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll’s dedicated Help repository][jekyll-help].
+
+        [jekyll]:      http://jekyllrb.com
+        [jekyll-gh]:   https://github.com/jekyll/jekyll
+        [jekyll-help]: https://github.com/jekyll/jekyll-help
+
+
+
+        Topics -> Topic page
+
+        Courses
+
+        Unit
+
+      data:
+        layout: post
+        title: Welcome to Jekyll!
+        date: 2014-11-11 23:18:28.000000000 -08:00
+        categories: jekyll update
+      extracted_excerpt: !ruby/object:Jekyll::Excerpt
+        post: *6
+        content: |-
+          You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve --watch`, which launches a web server and auto-regenerates your site when a file is updated.
+
+          [jekyll]:      http://jekyllrb.com
+          [jekyll-gh]:   https://github.com/jekyll/jekyll
+          [jekyll-help]: https://github.com/jekyll/jekyll-help
+      tags: []
+    pages:
+    - !ruby/object:Jekyll::Page
+      site: *5
+      base: "/Users/kkothagal/code/java-brains/jb-jekyll"
+      dir: ''
+      name: about.md
+      ext: ".md"
+      basename: about
+      content: |
+        This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
+
+        You can find the source code for the Jekyll new theme at: [github.com/jglovier/jekyll-new](https://github.com/jglovier/jekyll-new)
+
+        You can find the source code for Jekyll at [github.com/jekyll/jekyll](https://github.com/jekyll/jekyll)
+      data:
+        layout: page
+        title: About
+        permalink: "/about/"
+    - !ruby/object:Jekyll::Page
+      site: *5
+      base: "/Users/kkothagal/code/java-brains/jb-jekyll"
+      dir: ''
+      name: feed.xml
+      ext: ".xml"
+      basename: feed
+      content: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+          <channel>
+            <title>{{ site.title | xml_escape }}</title>
+            <description>{{ site.description | xml_escape }}</description>
+            <link>{{ site.url }}{{ site.baseurl }}/</link>
+            <atom:link href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" rel="self" type="application/rss+xml" />
+            <pubDate>{{ site.time | date_to_rfc822 }}</pubDate>
+            <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
+            <generator>Jekyll v{{ jekyll.version }}</generator>
+            {% for post in site.posts limit:10 %}
+              <item>
+                <title>{{ post.title | xml_escape }}</title>
+                <description>{{ post.content | xml_escape }}</description>
+                <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
+                <link>{{ post.url | prepend: site.baseurl | prepend: site.url }}</link>
+                <guid isPermaLink="true">{{ post.url | prepend: site.baseurl | prepend: site.url }}</guid>
+                {% for tag in post.tags %}
+                <category>{{ tag | xml_escape }}</category>
+                {% endfor %}
+                {% for cat in post.categories %}
+                <category>{{ cat | xml_escape }}</category>
+                {% endfor %}
+              </item>
+            {% endfor %}
+          </channel>
+        </rss>
+      data:
+        layout: 
+    - !ruby/object:Jekyll::Page
+      site: *5
+      base: "/Users/kkothagal/code/java-brains/jb-jekyll"
+      dir: ''
+      name: index.html
+      ext: ".html"
+      basename: index
+      content: "<div class=\"home\">\n\n  <h1 class=\"page-heading\">Posts</h1>\n\n
+        \ \n  <p class=\"rss-subscribe\">subscribe <a href=\"{{ \"/feed.xml\" | prepend:
+        site.baseurl }}\">via RSS</a></p>\n\n    \n    \n  <ul class=\"post-list\">\n
+        \   {% for topic in site.topics %}\n      <li>\n        <span class=\"post-meta\">{{
+        topic.date | date: \"%b %-d, %Y\" }}</span>\n\n        <h2>\n          <a
+        class=\"post-link\" href=\"{{ topic.url | prepend: site.baseurl }}\">{{ topic.title
+        }}</a>\n        </h2>\n      </li>\n    {% endfor %}\n  </ul>\n    \n   \n
+        \   \n</div>\n"
+      data:
+        layout: default
+    - !ruby/object:Jekyll::Page
+      site: *5
+      base: "/Users/kkothagal/code/java-brains/jb-jekyll"
+      dir: "/css"
+      name: main.scss
+      ext: ".scss"
+      basename: main
+      content: |
+        @charset "utf-8";
+
+
+
+        // Our variables
+        $base-font-family: Helvetica, Arial, sans-serif;
+        $base-font-size:   16px;
+        $small-font-size:  $base-font-size * 0.875;
+        $base-line-height: 1.5;
+
+        $spacing-unit:     30px;
+
+        $text-color:       #111;
+        $background-color: #fdfdfd;
+        $brand-color:      #2a7ae2;
+
+        $grey-color:       #828282;
+        $grey-color-light: lighten($grey-color, 40%);
+        $grey-color-dark:  darken($grey-color, 25%);
+
+        $on-palm:          600px;
+        $on-laptop:        800px;
+
+
+
+        // Using media queries with like this:
+        // @include media-query($palm) {
+        //     .wrapper {
+        //         padding-right: $spacing-unit / 2;
+        //         padding-left: $spacing-unit / 2;
+        //     }
+        // }
+        @mixin media-query($device) {
+            @media screen and (max-width: $device) {
+                @content;
+            }
+        }
+
+
+
+        // Import partials from `sass_dir` (defaults to `_sass`)
+        @import
+                "base",
+                "layout",
+                "syntax-highlighting"
+        ;
+      data: {}
+    - !ruby/object:Jekyll::Page
+      site: *5
+      base: "/Users/kkothagal/code/java-brains/jb-jekyll"
+      dir: ''
+      name: topics.html
+      ext: ".html"
+      basename: topics
+      content: "{% assign topics = (site.topics | sort: 'sl') %}\n\n<ul class=\"post-list\">\n
+        \   {% for topic in topics %}\n      <li>\n        <span class=\"post-meta\">{{
+        topic.date | date: \"%b %-d, %Y\" }}</span>\n\n        <h2>\n          <a
+        class=\"post-link\" href=\"{{ topic.url | prepend: site.baseurl }}\">{{ topic.title
+        }}</a>\n        </h2>\n      </li>\n    {% endfor %}\n  </ul>\n    "
+      data:
+        layout: default
+    static_files:
+    - !ruby/object:Jekyll::StaticFile
+      site: *5
+      base: "/Users/kkothagal/code/java-brains/jb-jekyll"
+      dir: ''
+      name: out.txt
+      collection: 
+    data: {}
+    collections: *7
+    converters:
+    - !ruby/object:Jekyll::Converters::Markdown
+      config: *8
+    - !ruby/object:Jekyll::Converters::Textile
+      config: *8
+    - !ruby/object:Jekyll::Converters::Scss
+      config: *8
+    - !ruby/object:Jekyll::Converters::CoffeeScript
+      config: *8
+    - !ruby/object:Jekyll::Converters::Sass
+      config: *8
+    - !ruby/object:Jekyll::Converters::Identity
+      config: *8
+    generators:
+    - !ruby/object:Reading::Generator {}
+    - !ruby/object:Jekyll::Paginate::Pagination {}
+    frontmatter_defaults: !ruby/object:Jekyll::FrontmatterDefaults
+      site: *5
+    publisher: !ruby/object:Jekyll::Publisher
+      site: *5
+  label: topics
+  metadata: *9
+  entry_filter: !ruby/object:Jekyll::EntryFilter
+    site: *5
+    base_directory: _topics
+  docs:
+  - !ruby/object:Jekyll::Document
+    site: *5
+    path: "/Users/kkothagal/code/java-brains/jb-jekyll/_topics/hibernate.markdown"
+    collection: *10
+    has_yaml_header: 
+    data:
+      layout: topic
+      title: Hibernate
+      sl: 4
+      topic_id: hibernate
+    url: "/topics/hibernate.html"
+    content: "<h1>Hibernate</h1>"
+  - !ruby/object:Jekyll::Document
+    site: *5
+    path: "/Users/kkothagal/code/java-brains/jb-jekyll/_topics/javaee.markdown"
+    collection: *10
+    has_yaml_header: 
+    data:
+      layout: topic
+      title: Java EE
+      sl: 1
+      categories: spring update
+      topic_id: javaee
+    url: "/topics/javaee.html"
+    content: "<h1>Java EE</h1>"
+  - !ruby/object:Jekyll::Document
+    site: *5
+    path: "/Users/kkothagal/code/java-brains/jb-jekyll/_topics/maven.markdown"
+    collection: *10
+    has_yaml_header: 
+    data:
+      layout: topic
+      title: Maven
+      sl: 6
+      categories: spring update
+    url: "/topics/maven.html"
+    content: "<h1>Struts</h1>"
+  - !ruby/object:Jekyll::Document
+    site: *5
+    path: "/Users/kkothagal/code/java-brains/jb-jekyll/_topics/servlets.markdown"
+    collection: *10
+    has_yaml_header: 
+    data:
+      layout: topic
+      title: Servlets and JSPs
+      sl: 2
+      categories: spring update
+    url: "/topics/servlets.html"
+    content: "<h1>Struts</h1>"
+  - !ruby/object:Jekyll::Document
+    site: *5
+    path: "/Users/kkothagal/code/java-brains/jb-jekyll/_topics/spring.markdown"
+    collection: *10
+    has_yaml_header: 
+    data:
+      layout: topic
+      title: Spring
+      sl: 3
+      categories: spring update
+    url: "/topics/spring.html"
+    content: "<h1>Spring</h1>"
+  - !ruby/object:Jekyll::Document
+    site: *5
+    path: "/Users/kkothagal/code/java-brains/jb-jekyll/_topics/test/struts.markdown"
+    collection: *10
+    has_yaml_header: 
+    data:
+      layout: post
+      title: Struts 2
+      sl: 5
+      categories: spring update
+    url: "/topics/test/struts.html"
+    content: "<h1>Struts</h1>"
+courses: &12 !ruby/object:Jekyll::Collection
+  site: *5
+  label: courses
+  metadata: *11
+  entry_filter: !ruby/object:Jekyll::EntryFilter
+    site: *5
+    base_directory: _courses
+  docs:
+  - !ruby/object:Jekyll::Document
+    site: *5
+    path: "/Users/kkothagal/code/java-brains/jb-jekyll/_courses/developing_rest_apis_with_jaxrs.markdown"
+    collection: *12
+    has_yaml_header: 
+    data:
+      layout: course
+      title: Developing REST APIs with JAX-RS
+      sl: 3
+      topic: javaee
+      course_id: javaee_jaxrs
+    url: "/courses/developing_rest_apis_with_jaxrs.html"
+    content: "<h1>Java EE</h1>"
+  - !ruby/object:Jekyll::Document
+    site: *5
+    path: "/Users/kkothagal/code/java-brains/jb-jekyll/_courses/intro_to_hibernate.markdown"
+    collection: *12
+    has_yaml_header: 
+    data:
+      layout: post
+      title: Intro To Hibernate
+      topic: hibernate
+      sl: 2
+      categories: hibernate course
+    url: "/courses/intro_to_hibernate.html"
+    content: "<h1>Hibernate</h1>"
+  - !ruby/object:Jekyll::Document
+    site: *5
+    path: "/Users/kkothagal/code/java-brains/jb-jekyll/_courses/intro_to_javaee.markdown"
+    collection: *12
+    has_yaml_header: 
+    data:
+      layout: post
+      title: Intro To Java EE
+      sl: 1
+      topic: javaee
+    url: "/courses/intro_to_javaee.html"
+    content: "<h1>Java EE</h1>"
+  - !ruby/object:Jekyll::Document
+    site: *5
+    path: "/Users/kkothagal/code/java-brains/jb-jekyll/_courses/intro_to_spring.markdown"
+    collection: *12
+    has_yaml_header: 
+    data:
+      layout: post
+      title: Intro To Spring
+      date: 2014-11-11 23:18:28.000000000 -08:00
+      categories: spring update
+    url: "/courses/intro_to_spring.html"
+    content: "<h1>Spring</h1>"
+  - !ruby/object:Jekyll::Document
+    site: *5
+    path: "/Users/kkothagal/code/java-brains/jb-jekyll/_courses/intro_to_struts.markdown"
+    collection: *12
+    has_yaml_header: 
+    data:
+      layout: post
+      title: Intro To Struts
+      date: 2014-11-11 23:18:28.000000000 -08:00
+      categories: spring update
+    url: "/courses/intro_to_struts.html"
+    content: "<h1>Struts</h1>"
+units: &14 !ruby/object:Jekyll::Collection
+  site: *5
+  label: units
+  metadata: *13
+  entry_filter: !ruby/object:Jekyll::EntryFilter
+    site: *5
+    base_directory: _units
+  docs:
+  - !ruby/object:Jekyll::Document
+    site: *5
+    path: "/Users/kkothagal/code/java-brains/jb-jekyll/_units/hibernate/01.markdown"
+    collection: *14
+    has_yaml_header: 
+    data:
+      layout: topic
+      title: Hibernate Unit 1
+      sl: 1
+      topic: hibernate
+      course: javaee_jaxrs
+    url: "/units/hibernate/01.html"
+    content: "<h1>Hibernate</h1>"
+  - !ruby/object:Jekyll::Document
+    site: *5
+    path: "/Users/kkothagal/code/java-brains/jb-jekyll/_units/hibernate/02.markdown"
+    collection: *14
+    has_yaml_header: 
+    data:
+      layout: topic
+      title: Hibernate Unit 2
+      sl: 2
+      topic: hibernate
+      course: javaee_jaxrs
+    url: "/units/hibernate/02.html"
+    content: "<h1>Hibernate</h1>"
+sections: &16 !ruby/object:Jekyll::Collection
+  site: *5
+  label: sections
+  metadata: *15
+  entry_filter: !ruby/object:Jekyll::EntryFilter
+    site: *5
+    base_directory: _sections
+  docs:
+  - !ruby/object:Jekyll::Document
+    site: *5
+    path: "/Users/kkothagal/code/java-brains/jb-jekyll/_sections/javaee_jaxrs/01-01.markdown"
+    collection: *16
+    has_yaml_header: 
+    data:
+      layout: topic
+      title: Introduction
+      unit: 1
+      lesson: 1
+      course: javaee_jaxrs
+    url: "/sections/javaee_jaxrs/01-01.html"
+    content: "<h1>Hibernate</h1>"
+  - !ruby/object:Jekyll::Document
+    site: *5
+    path: "/Users/kkothagal/code/java-brains/jb-jekyll/_sections/javaee_jaxrs/01-02.markdown"
+    collection: *16
+    has_yaml_header: 
+    data:
+      layout: topic
+      title: Quiz
+      unit: 1
+      lesson: 2
+      course: javaee_jaxrs
+    url: "/sections/javaee_jaxrs/01-02.html"
+    content: "<h1>Hibernate</h1>"
+  - !ruby/object:Jekyll::Document
+    site: *5
+    path: "/Users/kkothagal/code/java-brains/jb-jekyll/_sections/javaee_jaxrs/03.markdown"
+    collection: *16
+    has_yaml_header: 
+    data:
+      layout: topic
+      title: Reading
+      unit: 2
+      lesson: 1
+      course: javaee_jaxrs
+    url: "/sections/javaee_jaxrs/03.html"
+    content: "<h1>Hibernate</h1>"
+  - !ruby/object:Jekyll::Document
+    site: *5
+    path: "/Users/kkothagal/code/java-brains/jb-jekyll/_sections/javaee_jaxrs/adfa.markdown"
+    collection: *16
+    has_yaml_header: 
+    data:
+      layout: topic
+      title: New
+      unit: 1
+      lesson: 1
+      course: javaee_jaxrs
+    url: "/sections/javaee_jaxrs/adfa.html"
+    content: "<h1>Hibernate</h1>"
+  - !ruby/object:Jekyll::Document
+    site: *5
+    path: "/Users/kkothagal/code/java-brains/jb-jekyll/_sections/javaee_jaxrs/jkhgkj.markdown"
+    collection: *16
+    has_yaml_header: 
+    data:
+      layout: topic
+      title: Quiz
+      unit: 1
+      lesson: 3
+      course: javaee_jaxrs
+    url: "/sections/javaee_jaxrs/jkhgkj.html"
+    content: "<h1>Hibernate</h1>"
+  - !ruby/object:Jekyll::Document
+    site: *5
+    path: "/Users/kkothagal/code/java-brains/jb-jekyll/_sections/javaee_jaxws/adfa.markdown"
+    collection: *16
+    has_yaml_header: 
+    data:
+      layout: topic
+      title: Other course
+      unit: 1
+      lesson: 1
+      course: javaee_jaxws
+    url: "/sections/javaee_jaxws/adfa.html"
+    content: "<h1>Hibernate</h1>"
+                    done.
+ Auto-regeneration: enabled for '/Users/kkothagal/code/java-brains/jb-jekyll'
+Configuration file: /Users/kkothagal/code/java-brains/jb-jekyll/_config.yml
+    Server address: http://0.0.0.0:4000/
+  Server running... press ctrl-c to stop.

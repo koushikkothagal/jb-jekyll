@@ -1,0 +1,9 @@
+---
+layout: topic
+title:  "Hibernate Unit 2"
+sl: 2
+topic: hibernate
+course: javaee_jaxrs
+---
+
+<h1>Hibernate</h1>

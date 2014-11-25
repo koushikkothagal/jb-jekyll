@@ -1,0 +1,105 @@
+---
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>B-Blog</title>
+		<!-- Google fonts -->
+		<link href='http://fonts.googleapis.com/css?family=Josefin+Sans:100,400,600,700,100,100italic,300,300italic,400italic,600italic,700italic|Montserrat:400,700|Open+Sans:400,700|Dosis|Kaushan+Script|Muli|Alegreya|Damion' rel='stylesheet' type='text/css'>
+		<!-- Bootstrap -->
+		<link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+		<link href="/assets/css/bootstrap-theme.css" rel="stylesheet">
+		<!-- fontawesome -->
+		<link href="/assets/css/font-awesome.min.css" rel="stylesheet">
+		<link href="/assets/css/font-awesome-animation.css" rel="stylesheet">
+		<link href="/assets/css/style.css" rel="stylesheet">
+		<link href="/assets/css/link-effect.css" rel="stylesheet">
+		<link href="/assets/css/grid-effect.css" rel="stylesheet">
+		<link href="/assets/css/skin.css" rel="stylesheet">
+		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+		<script src="/assets/js/modernizr.custom.js"></script>
+		<!--[if lte IE 9]>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<![endif]-->
+	</head>
+	<body>
+
+		<div id="wrapper">
+            
+            {% include site-header.html %}
+            
+			<!-- content area starts -->
+			<div id="main" role="main">
+                
+                
+                <div class="page-title">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-6">
+                                        <h1>Topics</h1>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-6">
+                                        <ol class="breadcrumb">
+                                            <li>
+                                                <a href="index.html">Home</a>
+                                            </li>
+                                            <li class="active">
+                                                Topics
+                                            </li>
+                                        </ol>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                
+                
+				<div class="container" id="topics-container">
+					
+                    
+					<!-- Gallery -->
+					<div class="row text-center grid effect-2" id="grid">
+                        {% assign topics = (site.topics | sort: 'sl') %}
+                        {% for topic in topics %}
+						<section class="col-xs-12 col-sm-4">
+							<article class="thumbnail box-outline">
+								<div class="caption">
+									<span class="date">Topic</span>
+									<h3><a href="{{ topic.url | prepend: site.baseurl }}">{{ topic.title }}</a></h3>
+									<p>
+                                        {{ topic.desc }}
+									</p>
+									<ul class="link-center">
+										<li>
+											<a href="#">#courses</a>
+										</li>
+										<li>
+											<a href="#">#recipies</a>
+										</li>
+									</ul>
+								</div>
+							</article>
+						</section>
+						{% endfor %}
+						
+					</div>
+					<!-- Gallery -->
+				</div>
+			</div>
+			<!-- content area ends -->
+		</div>
+
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="/assets/js/jquery.min.js"></script>
+		<script src="/assets/js/bootstrap.min.js"></script>		
+		<script src="/assets/js/masonry.pkgd.min.js"></script>
+		<script src="/assets/js/imagesloaded.js"></script>
+		<script src="/assets/js/classie.js"></script>
+		<script src="/assets/js/AnimOnScroll.js"></script>
+		<script src="/assets/js/site.js"></script>
+	</body>
+</html>

@@ -1,0 +1,8 @@
+---
+layout: topic
+title:  "New"
+lesson_title: Collection URIs
+lesson_desc: You can think of RESTful URIs as belonging to two types - instance resource URIs and collection resource URIs. Let's understand what they mean.
+---
+
+<h1>Hibernate</h1>

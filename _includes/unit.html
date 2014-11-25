@@ -1,0 +1,45 @@
+
+    
+ <div class="container">
+  <ul class="cbp_tmtimeline">
+  
+  {% for course in site.data['courseData'] %}
+    
+  {% if course.name != page.course_id %}
+    {% continue %}
+  {% endif %}
+    
+  {% for unit in course.units %}  
+      
+    <li>
+        <div class="cbp_tmtime"><span>Unit</span> <span>{{unit.name}}</span></div>
+        <div class="cbp_tmicon cbp_tmicon-screen"></div>
+        <div class="cbp_tmlabel">
+            <h2>Unit {{unit.name}}</h2>
+            <p>{{ unit.desc }}</p>
+            {% for lesson in unit.lessons %}
+            <div class="list-group">
+              <a href="{{ lesson.url }}" class="list-group-item">
+                <h3 class="list-group-item-heading">{{ lesson.title }}</h3>
+                <p class="list-group-item-text">{{ lesson.desc | markdownify }}</p>
+              </a>
+
+            </div>
+            {% endfor %}
+        </div>
+        
+        
+        
+    </li>
+   
+            
+    {% endfor %}
+    
+    {% endfor %}        
+            
+            
+            
+</ul>
+     
+     
+</div>     

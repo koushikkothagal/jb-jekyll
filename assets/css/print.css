@@ -1,0 +1,3 @@
+#header, #footer, form, .page-title, .blog-post .col-sm-4, .post-author, .icon-circle { display:none;}
+/*Break Page*/
+.break-print {page-break-before: always;}

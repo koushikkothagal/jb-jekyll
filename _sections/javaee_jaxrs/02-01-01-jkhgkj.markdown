@@ -1,0 +1,9 @@
+---
+layout: topic
+title:  "Quiz"
+lesson_title: Designing Resource URIs
+lesson_desc: In this tutorial, we’ll start designing a sample RESTful API for our sample social media application. And through the process, we’ll understand how RESTful URIs are designed.
+
+---
+
+<h1>Hibernate</h1>

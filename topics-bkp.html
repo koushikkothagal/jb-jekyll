@@ -1,0 +1,18 @@
+---
+layout: default
+---
+
+{% assign topics = (site.topics | sort: 'sl') %}
+
+<ul class="post-list">
+    {% for topic in topics %}
+      <li>
+        <span class="post-meta">{{ topic.date | date: "%b %-d, %Y" }}</span>
+
+        <h2>
+          <a class="post-link" href="{{ topic.url | prepend: site.baseurl }}">{{ topic.title }}</a>
+        </h2>
+      </li>
+    {% endfor %}
+  </ul>
+    

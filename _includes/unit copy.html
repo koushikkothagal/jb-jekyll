@@ -1,0 +1,41 @@
+
+    
+
+
+{% for course in site.data['courseData'] %}
+    
+{% if course.name != page.course_id %}
+    {% continue %}
+{% endif %}
+    
+        {% for unit in course.units %}
+                            <div class="row">
+								<div class="custom-callout-second anim-section">
+									<div class="custom-callout">
+
+										<div class="col-xs-12 col-sm-2">
+											<i class="fa fa-dropbox icon-big"></i>
+										</div>
+
+										<div class="col-xs-12 col-sm-10">
+											<h2>Unit {{unit.name}}</h2>
+											<p>
+												{{ unit.desc }}
+											</p>
+											
+                                            {% for lesson in unit.lessons %}
+                                             <div class="list-group">
+                                              <a href="{{lesson.url}}" class="list-group-item">
+                                                <h3 class="list-group-item-heading">  {{ lesson.title }}</h3>
+                                                <p class="list-group-item-text">{{ lesson.lesson_desc }}</p>
+                                              </a>
+                                                
+                                            </div>
+                                            {% endfor %}
+										</div>
+									</div>
+								</div>
+                                </div>
+        {% endfor %}
+    
+    {% endfor %}
